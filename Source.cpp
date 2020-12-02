@@ -17,21 +17,12 @@
 //Day 2 Part 2
 //The min and max values are actually positions, the character must appear at either position but not both, count the number of passwords that meet this condition
 
-class password
+struct password
 {
-public:
 	int min;
 	int max;
 	char c;
 	std::string pass;
-
-	password(int newMin, int newMax, char newC, std::string newPassword)
-	{
-		min = newMin;
-		max = newMax;
-		c = newC;
-		pass = newPassword;
-	}
 };
 
 std::vector<std::string> getPuzzleInput()
@@ -78,10 +69,11 @@ std::vector<password> splitItems(std::vector<std::string> input)
 		char c = parts[1][0];
 		std::string pass = parts[2];
 
-		result.push_back(password({ min, max, c, pass }));
+		result.push_back({ min, max, c, pass });
 	}
 	return result;
 }
+
 
 //correct solution for part 1, man I had to go through so much nonsense to get here
 int findAnswerPart1(std::vector<password> input)
@@ -127,7 +119,7 @@ int main()
 		std::cout << "min:" << splitInput[i].min << " max:" << splitInput[i].max << " char:" << splitInput[i].c << " pass:" << splitInput[i].pass << '\n';
 	}*/
 
-	//std::cout << findAnswerPart1(splitInput) << '\n';
+	std::cout << findAnswerPart1(splitInput) << '\n';
 	std::cout << findAnswerPart2(splitInput) << '\n';
 
 	return 0;
